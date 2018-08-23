@@ -1,0 +1,24 @@
+{
+  "result": {
+    "item": "corn:chickencornchowder"
+  },
+
+  "ingredients": [
+    {
+      "item": "minecraft:bowl"
+    },
+    {
+      "item": "minecraft:milk_bucket"
+    },
+    {
+      "item": "minecraft:cooked_chicken"
+    },
+    {
+      "item": "corn:kernels"
+    },
+    {
+      "item": "corn:kernels"
+    },
+  ],
+  "type": "minecraft:crafting_shapeless"
+}

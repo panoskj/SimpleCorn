@@ -18,7 +18,7 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
 
-public class MyRecipeFireworks implements IRecipe
+public class MyRecipeFireworks extends net.minecraftforge.registries.IForgeRegistryEntry.Impl<IRecipe> implements IRecipe
 {
     private ItemStack resultItem= ItemStack.EMPTY;
     private boolean popcorn=false;;
@@ -278,11 +278,11 @@ public class MyRecipeFireworks implements IRecipe
     /**
      * Returns the size of the recipe area
      */
-    @Override
-	public int getRecipeSize()
-    {
-        return 10;
-    }
+    // @Override
+	// public int getRecipeSize()
+    // {
+        // return 10;
+    // }
 
     @Override
 	@Nullable
@@ -304,5 +304,17 @@ public class MyRecipeFireworks implements IRecipe
         }
 
         return nonnulllist;
+    }
+
+    @Override
+    public boolean isDynamic()
+    {
+        return true;
+    }
+
+    @Override
+    public boolean canFit(int width, int height)
+    {
+        return width * height >= 1;
     }
 }

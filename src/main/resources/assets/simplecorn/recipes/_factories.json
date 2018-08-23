@@ -1,0 +1,5 @@
+{
+  "recipes": {
+    "kernels": "panda.corn.other.Recipes$KernelsRecipeFactory"
+  }
+}

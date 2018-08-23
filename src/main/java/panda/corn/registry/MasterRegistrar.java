@@ -20,11 +20,11 @@ import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
-import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.VillagerRegistry;
 import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.oredict.RecipeSorter;
-import net.minecraftforge.oredict.RecipeSorter.Category;
+//import net.minecraftforge.oredict.RecipeSorter;
+//import net.minecraftforge.oredict.RecipeSorter.Category;
 
 public final class MasterRegistrar {
 	
@@ -35,12 +35,12 @@ public final class MasterRegistrar {
 			Object k = iterator.next();
 			if (k instanceof Block) {
 				Block block = (Block) k;
-				GameRegistry.register(block);
+				ForgeRegistries.BLOCKS.register(block);
 				block.setUnlocalizedName(Corn.MODID + "." + block.getRegistryName().getResourcePath());
-				if (Item.getItemFromBlock(block) == null)
-					GameRegistry.register(new ItemBlock(block), block.getRegistryName());
+				// if (Item.getItemFromBlock(block) == null)
+					// ForgeRegistries.BLOCKS.register(new ItemBlock(block), block.getRegistryName());
 			} else if (k instanceof Item) {
-				GameRegistry.register((Item) k);
+				ForgeRegistries.ITEMS.register((Item) k);
 				((Item) k).setUnlocalizedName(Corn.MODID + "." + ((Item) k).getRegistryName().getResourcePath());
 			}
 
@@ -79,6 +79,6 @@ public final class MasterRegistrar {
 		
 		MapGenStructureIO.registerStructureComponent(ComponentCornField.class, "Vicf");
 		VillagerRegistry.instance().registerVillageCreationHandler(new CornWorldGen());
-		RecipeSorter.register("simplecorn:fireworks", MyRecipeFireworks.class, Category.SHAPELESS, "after:minecraft:fireworks");
+		// RecipeSorter.register("simplecorn:fireworks", MyRecipeFireworks.class, Category.SHAPELESS, "after:minecraft:fireworks");
 	}
 }

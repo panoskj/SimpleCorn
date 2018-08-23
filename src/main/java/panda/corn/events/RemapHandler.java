@@ -3,44 +3,54 @@ package panda.corn.events;
 import java.util.List;
 
 import panda.corn.registry.ObjectList;
-import net.minecraft.item.ItemStack;
-import net.minecraftforge.fml.common.event.FMLMissingMappingsEvent;
-import net.minecraftforge.fml.common.event.FMLMissingMappingsEvent.MissingMapping;
+import net.minecraft.item.Item;
+import net.minecraft.block.Block;
+import net.minecraftforge.event.RegistryEvent.MissingMappings;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class RemapHandler {
 
-	public static void processingMissingMap(FMLMissingMappingsEvent event)
+    @SubscribeEvent
+	public static void processMissingBlockMappings(MissingMappings<Block> event)
     {
-        List<MissingMapping> missingMappings = event.get();
-        for (MissingMapping map : missingMappings)
+        for (MissingMappings.Mapping<Block> entry : event.getAllMappings())
         {
-        	if(map.name.equals("corn:corn")){
-        		map.remap(ObjectList.CORN);
-        	}else
-        		if(map.name.equals("corn:corncob")){
-        			map.remap(ObjectList.COB);
-        		}else
-        			if(map.name.equals("corn:kernels")){
-        				map.remap(ObjectList.KERNELS);
-        			}else
-        				if(map.name.equals("corn:poppedcorn")){
-        					map.remap(ObjectList.POPCORN);
-        				}else
-        					if(map.name.equals("corn:roastedcornn")){
-        						map.remap(ObjectList.ROASTED_CORN);
-        					}else
-        						if(map.name.equals("corn:popfirework")){
-        							map.remap(ObjectList.POP_FIREWORK);
-        						}else
-        							if(map.name.equals("corn:chickencornchowder")){
-        								map.remap(ObjectList.CHICKEN_CHOWDER);
-        							}else
-        								if(map.name.equals("corn:cornchowder")){
-        									map.remap(ObjectList.CHOWDER);
-        								}
-
-
+        	if(entry.key.toString().equals("corn:corn"))
+        		entry.remap(ObjectList.CORN);
+        }
+    }
+    
+    @SubscribeEvent
+	public static void processMissingItemMappings(MissingMappings<Item> event)
+    {
+        for (MissingMappings.Mapping<Item> entry : event.getAllMappings())
+        {
+            switch(entry.key.toString())
+            {
+                case "corn:corncob":
+                    entry.remap(ObjectList.COB);
+                    break;
+                case "corn:kernels":
+                    entry.remap(ObjectList.KERNELS);
+                    break;
+                case "corn:poppedcorn":
+                    entry.remap(ObjectList.POPCORN);
+                    break;
+                case "corn:roastedcorn":
+                    entry.remap(ObjectList.ROASTED_CORN);
+                    break;
+                case "corn:popfirework":
+                    entry.remap(ObjectList.POP_FIREWORK);
+                    break;
+                case "corn:chickencornchowder":
+                    entry.remap(ObjectList.CHICKEN_CHOWDER);
+                    break;
+                case "corn:cornchowder":
+                    entry.remap(ObjectList.CHOWDER);
+                    break;
+                    
+                default: break;
+            }
         }
     }
 }

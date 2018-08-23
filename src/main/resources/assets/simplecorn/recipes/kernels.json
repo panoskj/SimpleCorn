@@ -1,0 +1,13 @@
+{
+  "result": {
+    "item": "corn:kernels",
+    "count": 2
+  },
+
+  "ingredients": [
+    {
+      "item": "corn:corncob"
+    }
+  ],
+  "type": "minecraft:crafting_shapeless"
+}

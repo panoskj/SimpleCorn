@@ -14,8 +14,13 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.translation.I18n;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.world.World;
 import com.google.common.collect.Lists;
+import javax.annotation.Nullable;
+
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class MyFireworkItem extends ItemFirework{
 	/**
@@ -45,7 +50,8 @@ public class MyFireworkItem extends ItemFirework{
     }
 
 	@Override
-	public void addInformation(ItemStack stack, EntityPlayer playerIn,List<String> tooltip, boolean advanced) {
+	@SideOnly(Side.CLIENT)
+	public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
 		if (stack.hasTagCompound())
         {
             NBTTagCompound nbttagcompound = stack.getTagCompound().getCompoundTag("Fireworks");

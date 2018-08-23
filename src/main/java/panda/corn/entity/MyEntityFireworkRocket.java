@@ -24,7 +24,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class MyEntityFireworkRocket extends Entity{
 	
-	private static final DataParameter<ItemStack> FIREWORK_ITEM = EntityDataManager.<ItemStack>createKey(MyEntityFireworkRocket.class, DataSerializers.OPTIONAL_ITEM_STACK);
+	private static final DataParameter<ItemStack> FIREWORK_ITEM = EntityDataManager.<ItemStack>createKey(MyEntityFireworkRocket.class, DataSerializers.ITEM_STACK);
 	/** The age of the firework in ticks. */
 	public int fireworkAge;
 	/** The lifetime of the firework in ticks. When the age reaches the lifetime the firework explodes. */
@@ -211,16 +211,16 @@ public class MyEntityFireworkRocket extends Entity{
 	 * Gets how bright this entity is.
 	 */
 	@Override
-	public float getBrightness(float partialTicks)
+	public float getBrightness()
 	{
-		return super.getBrightness(partialTicks);
+		return super.getBrightness();
 	}
 
 	@Override
 	@SideOnly(Side.CLIENT)
-	public int getBrightnessForRender(float partialTicks)
+	public int getBrightnessForRender()
 	{
-		return super.getBrightnessForRender(partialTicks);
+		return super.getBrightnessForRender();
 	}
 
 	/**
